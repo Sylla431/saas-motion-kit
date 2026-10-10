@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+**Fixed**
+- `tools/deliver.sh` delivered audio over its own −1.5 dBTP limit. ffmpeg's native AAC encoder at 192k adds inter-sample peaks: on a bright synth mix the true peak went from −2.8 dBTP after loudnorm to +1.9 dBTP in the file. The script now aims for −2 dBTP, encodes at 320k, measures the encoded file, prints its loudness and true peak, and exits non-zero if the peak is still over −1.5 dBTP.
+
 ## v1.4: learn from real films, credit the people who made them (2026-10-04)
 
 **Added**

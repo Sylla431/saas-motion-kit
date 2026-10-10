@@ -8,7 +8,7 @@
 | `breakdown.py <video> --id NN [--creator …] [--url …] [--threshold 0.1]` | Breaks a reference video into shots: cut times, rhythm (cuts per 10 s, the first 3 s), a contact sheet and a draft ledger, with a credit header. Writes to the git-ignored `.references/` |
 | `fal_shots.py <shots.json> [--dry-run] [--only id,…] [--force]` | Runs a film's shot list on fal's queue: cast card → stills → clips, chaining outputs with `@step`, caching results and downloading into `assets/footage/` (needs `FAL_KEY`) |
 | `screen_track.py <plate.mp4> <out.js> [--var NAME]` | Finds a flat `#00FF00` screen in a plate frame by frame and writes its corners, so the composition can pin real UI onto it |
-| `deliver.sh <in> <WxH> [out] [lanczos\|area]` | Downscales a 4K render to its delivery size and loudness-normalises the audio |
+| `deliver.sh <in> <WxH> [out] [lanczos\|area]` | Downscales a 4K render to its delivery size, loudness-normalises the audio (−14 LUFS, 320k AAC) and fails if the encoded true peak is over −1.5 dBTP |
 | `loop_check.py <video>` | Compares the first and last frames of a loop (under ~3 means seamless) |
 | `warm_sfx.py <dir>` | Synthesises warm UI sounds in C major: pop, tick, confirm, reveal, error-soft, whoosh-soft |
 | `build_gallery.py` | Rebuilds `docs/index.html` from `docs/themes/data/*.json` |

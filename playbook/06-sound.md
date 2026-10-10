@@ -10,6 +10,6 @@ Choose one identity and commit to it:
 
 **Locally generated music.** Meta's MusicGen runs on a CPU (about 9 minutes per 30 s with the medium model). Its weights are **CC-BY-NC 4.0**, so use it for drafts and non-commercial work only.
 
-**Loudness for social:** `ffmpeg -af loudnorm=I=-14:TP=-1.5:LRA=11`.
+**Loudness for social:** −14 LUFS and at most −1.5 dBTP, measured on the encoded file. `tools/deliver.sh` does this for you. By hand: `ffmpeg -af loudnorm=I=-14:TP=-2:LRA=11 -c:a aac -b:a 320k`. Aim under the limit, because AAC adds inter-sample peaks: at 192k ffmpeg's native encoder can push a bright mix 4 dB over the target. Check the result with `-af ebur128=peak=true`.
 
 **Gate:** you approve the mix with the picture.
